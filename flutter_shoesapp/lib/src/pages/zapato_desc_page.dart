@@ -1,7 +1,9 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_shoesapp/src/models/zapato_model.dart';
 import 'package:flutter_shoesapp/src/widgets/botton_naranja.dart';
 import 'package:flutter_shoesapp/src/widgets/custom_widgets.dart';
+import 'package:provider/provider.dart';
 
 class ZapatoDescPage extends StatelessWidget {
   /// Static named route for page
@@ -121,10 +123,19 @@ class _ColoresYMas extends StatelessWidget {
           Expanded(
             child: Stack(
               children: [
-                Positioned(left: 90, child: _BottonColor(Color(0xffC6D642), 4)),
-                Positioned(left: 60, child: _BottonColor(Color(0xffFFAD29), 3)),
-                Positioned(left: 30, child: _BottonColor(Color(0xff2099F1), 2)),
-                _BottonColor(Color(0xff364D56), 1),
+                Positioned(
+                    left: 90,
+                    child: _BottonColor(
+                        Color(0xffC6D642), 4, 'assets/imgs/verde.png')),
+                Positioned(
+                    left: 60,
+                    child: _BottonColor(
+                        Color(0xffFFAD29), 3, 'assets/imgs/amarillo.png')),
+                Positioned(
+                    left: 30,
+                    child: _BottonColor(
+                        Color(0xff2099F1), 2, 'assets/imgs/azul.png')),
+                _BottonColor(Color(0xff364D56), 1, 'assets/imgs/negro.png'),
               ],
             ),
           ),
@@ -144,17 +155,25 @@ class _ColoresYMas extends StatelessWidget {
 class _BottonColor extends StatelessWidget {
   final Color color;
   final int index;
-  const _BottonColor(this.color, this.index);
+  final String urlImagen;
+
+  const _BottonColor(this.color, this.index, this.urlImagen);
 
   @override
   Widget build(BuildContext context) {
     return FadeInLeft(
       delay: Duration(milliseconds: this.index * 100),
       duration: Duration(milliseconds: 300),
-      child: Container(
-        width: 45,
-        height: 45,
-        decoration: BoxDecoration(color: this.color, shape: BoxShape.circle),
+      child: GestureDetector(
+        onTap: () {
+          final zapatoModel = Provider.of<ZapatoModel>(context, listen: false);
+          zapatoModel.assetImage = urlImagen;
+        },
+        child: Container(
+          width: 45,
+          height: 45,
+          decoration: BoxDecoration(color: this.color, shape: BoxShape.circle),
+        ),
       ),
     );
   }
