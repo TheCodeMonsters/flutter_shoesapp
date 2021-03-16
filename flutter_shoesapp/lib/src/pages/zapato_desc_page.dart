@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_shoesapp/src/helpers/helper.dart';
 import 'package:flutter_shoesapp/src/models/zapato_model.dart';
 import 'package:flutter_shoesapp/src/widgets/botton_naranja.dart';
 import 'package:flutter_shoesapp/src/widgets/custom_widgets.dart';
@@ -15,6 +16,8 @@ class ZapatoDescPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    cambiarStatusLight();
+
     return Scaffold(
         body: Column(
       children: [
@@ -33,6 +36,7 @@ class ZapatoDescPage extends StatelessWidget {
                   size: 60,
                 ),
                 onPressed: () {
+                  cambiarStatusDark();
                   Navigator.pop(context);
                 },
                 backgroundColor: Colors.transparent,

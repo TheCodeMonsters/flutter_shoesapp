@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_shoesapp/src/helpers/helper.dart';
 import 'package:flutter_shoesapp/src/widgets/custom_widgets.dart';
 
 class ZapatoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    cambiarStatusDark();
+
     return Scaffold(
       body: Column(
         children: <Widget>[
@@ -14,10 +17,7 @@ class ZapatoPage extends StatelessWidget {
               physics: BouncingScrollPhysics(),
               child: Column(
                 children: [
-                  Hero(
-                    tag: 'zapato-1',
-                    child: ZapatoSizePreview()
-                    ),
+                  Hero(tag: 'zapato-1', child: ZapatoSizePreview()),
                   ZapatoDescripcion(
                     titulo: 'Nike Air Max 720',
                     descripcion:
