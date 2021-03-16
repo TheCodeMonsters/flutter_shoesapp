@@ -17,11 +17,63 @@ class ZapatoSizePreview extends StatelessWidget {
         child: Column(
           children: [
             // Zapatos con si nombre
-            _ZapatosConZombra()
+            _ZapatosConZombra(),
             // TODO Tallas
+            _ZapatosTallas()
           ],
         ),
       ),
+    );
+  }
+}
+
+class _ZapatosTallas extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          _ZapatoTallaCaja(7),
+          _ZapatoTallaCaja(7.5),
+          _ZapatoTallaCaja(8),
+          _ZapatoTallaCaja(8.5),
+          _ZapatoTallaCaja(9),
+          _ZapatoTallaCaja(9.5),
+        ],
+      ),
+    );
+  }
+}
+
+class _ZapatoTallaCaja extends StatelessWidget {
+  final double numero;
+
+  const _ZapatoTallaCaja(this.numero);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      child: Text(
+        '${numero.toString().replaceAll('.0', '')}',
+        style: TextStyle(
+          color: Color(0xFFF1A23A),
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      width: 45,
+      height: 45,
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+                // TODO:  BoxSahadow
+                ),
+          ]),
     );
   }
 }
